@@ -1,0 +1,30 @@
+.categories {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  &__item {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+    padding: 10px 20px;
+    letter-spacing: 0.015em;
+    color: #2c2c2c;
+    height: 46px;
+    background: #f8f5f5;
+    border-radius: 30px;
+    &:hover {
+      background-color: rgb(16, 64, 9);
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
+.active {
+  background-color: #000;
+  color: #fff;
+}

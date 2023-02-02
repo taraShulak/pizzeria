@@ -1,0 +1,102 @@
+[
+  {
+    "id" : 0,
+    "imageUrl" : "img/1.png",
+    "name" : "Four Chesse",
+    "types" : [0, 1],
+    "sizes" : [25, 30, 40],
+    "price" : 10,
+    "category" : 1,
+    "rating" : 4
+  },
+  {
+    "id" : 1,
+    "imageUrl" : "img/1.png",
+    "name" : "Mexicano",
+    "types" : [0, 1],
+    "sizes" : [25, 30, 40],
+    "price" : 30,
+    "category" : 2,
+    "rating" : 4
+  },
+  {
+    "id" : 2,
+    "imageUrl" : "img/1.png",
+    "name" : "Shushhi",
+    "types" : [0, 1],
+    "sizes" : [25, 30, 40],
+    "price" : 11,
+    "category" : 3,
+    "rating" : 1
+  },
+  {
+    "id" : 3,
+    "imageUrl" : "img/3.png",
+    "name" : "Four Chesse",
+    "types" : [0, 1],
+    "sizes" : [25, 30, 40],
+    "price" : 10,
+    "category" : 4,
+    "rating" : 4
+  },
+  {
+    "id" : 4,
+    "imageUrl" : "img/1.png",
+    "name" : "Four Chesse",
+    "types" : [0, 1],
+    "sizes" : [25, 30, 40],
+    "price" : 13,
+    "category" : 2,
+    "rating" : 4
+  },
+  {
+    "id" : 5,
+    "imageUrl" : "img/2.png",
+    "name" : "Four Chesse",
+    "types" : [0, 1],
+    "sizes" : [25, 30, 40],
+    "price" : 10,
+    "category" : 2,
+    "rating" : 4
+  },
+  {
+    "id" : 6,
+    "imageUrl" : "img/3.png",
+    "name" : "Vegeterian",
+    "types" : [0, 1],
+    "sizes" : [35, 45, 60],
+    "price" : 22,
+    "category" : 1,
+    "rating" : 4
+  },
+  {
+    "id" : 7,
+    "imageUrl" : "img/4.png",
+    "name" : "Four Chesse",
+    "types" : [0, 1],
+    "sizes" : [25, 30, 40],
+    "price" : 10,
+    "category" : 3,
+    "rating" : 4
+  },
+  {
+    "id" : 8,
+    "imageUrl" : "img/1.png",
+    "name" : "Margarita",
+    "types" : [0, 1],
+    "sizes" : [30, 45, 60],
+    "price" : 18,
+    "category" : 5,
+    "rating" : 2
+  },
+  {
+    "id" : 9,
+    "imageUrl" : "img/2.png",
+    "name" : "Vegan",
+    "types" : [0, 1],
+    "sizes" : [30, 40, 50],
+    "price" : 20,
+    "category" : 5,
+    "rating" : 7
+  }
+]

@@ -1,0 +1,43 @@
+.sort {
+  position: relative;
+
+  &__title {
+    padding: 10px 20px;
+    font-size: 22px;
+    line-height: 1.5;
+    background-color: rgb(177, 164, 164);
+    border-radius: 5px;
+
+    span {
+      display: inline-block;
+      width: 150px;
+      text-align: center;
+      color: red;
+      background-color: #fff;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__list {
+    position: absolute;
+    width: 150px;
+    left: 95px;
+    background-color: rgb(241, 182, 182);
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    li {
+      padding: 5px 5px;
+      border-radius: 5px;
+    }
+
+    li:hover {
+      background-color: rgb(138, 226, 75);
+      padding-left: 40px;
+    }
+  }
+}

@@ -1,0 +1,96 @@
+.list__item {
+  width: 280px;
+
+  .item {
+    &__img {
+      padding: 10px;
+      width: 260px;
+      height: 260px;
+    }
+    &__title {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 20px;
+      text-align: center;
+      letter-spacing: 0.01em;
+      color: #000000;
+    }
+    &__options {
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      height: 85px;
+      letter-spacing: 0.015em;
+      color: #2c2c2c;
+      background: #f3f3f3;
+      border-radius: 10px;
+    }
+  }
+
+  .option__description {
+    display: flex;
+  }
+  .option__name {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    flex: 0 1 49.7%;
+    border-radius: 5px;
+    border: 1px solid #9eea81;
+    &:hover {
+      background-color: rgb(72, 225, 186);
+    }
+  }
+  .option__size {
+    display: flex;
+  }
+  .size {
+    flex: 0 1 33.333%;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+    border-radius: 5px;
+    border: 1px solid #9eea81;
+    &:hover {
+      background: rgb(72, 225, 186);
+    }
+  }
+  .item__footer {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .item__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 0.015em;
+    color: #000000;
+  }
+  .item__buy {
+    width: 155px;
+    height: 40px;
+    background: #ffffff;
+    border: 1px solid #eb5a1e;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #eb5a1e;
+    &:hover {
+      background-color: #eb5a1e;
+      color: #ffffff;
+    }
+  }
+}
+.active {
+  background-color: #fff;
+}
+.added {
+  background-color: #29a211;
+  color: rgb(38, 6, 135);
+}
