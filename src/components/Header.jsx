@@ -2,24 +2,24 @@ import React, {useState} from 'react'
 import debounce from 'lodash.debounce'
 
 import { Link } from 'react-router-dom'
-import { SearchContext } from '../App'
 import style from '../scss/Header.module.scss'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSearch } from '../redux/slices/categorySlice'
 
 
 const Header = () => {
 
+  const dispatch = useDispatch()
   const {totalPrice, items} = useSelector(state => state.drawer)
   const totalCount = items.reduce((sum, obj) => sum + obj.count, 0)
   const [current, setCurrent] = React.useState('')
 
-  const {setSearch} = React.useContext(SearchContext);
-
+  
   const inputRef = React.useRef()
 
   const updateSearch = React.useCallback(
     debounce((str) => {
-      setSearch(str)
+      dispatch( setSearch(str))
     }, 1000),
     []
   )  
@@ -30,7 +30,7 @@ const Header = () => {
   }
     
   const onClickClose = () => {
-    setSearch('') 
+    dispatch ( setSearch('') )
     setCurrent('')
     inputRef.current.focus()
   }

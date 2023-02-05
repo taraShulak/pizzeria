@@ -7,10 +7,10 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import DrawerPizza from './pages/DrawerPizza';
 
-export const SearchContext = React.createContext()
+
 
 function App() {
-
+  
 //then we use mockApi server for our data
 /* 
 
@@ -53,19 +53,9 @@ React.useEffect(() => {
 
 */
 
-const [search, setSearch] = React.useState('')
-
-const onChangeSearch = (event) => {
-  setSearch(event.target.value)
-}
-
-const clearSearch = () => {
-  setSearch('')
-}
 
   return (
     <div className={style.wrapper}>
-      <SearchContext.Provider value={{search, setSearch}}>
         <Header />
         <main className={style.main}>
           <Routes>
@@ -73,8 +63,7 @@ const clearSearch = () => {
             <Route path='/cart' element={<DrawerPizza/>}/>
             {/*<Route path='*' element={<NotFound/>} />*/}
           </Routes>        
-        </main>
-      </SearchContext.Provider>
+        </main>      
     </div>
   );
 }

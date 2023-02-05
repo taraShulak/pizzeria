@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 const initialState = {
+  search: '',
   categoryId : 0,
   sortType: 'rating'
 }
@@ -10,6 +11,9 @@ const categorySlice = createSlice({
   name : 'category',
   initialState,
   reducers : {
+    setSearch(state, action) {
+      state.search = action.payload
+    },
     setCategoryId(state, action) {
       state.categoryId = action.payload
     },
@@ -19,7 +23,7 @@ const categorySlice = createSlice({
   }
 })
 
-export const {setCategoryId, setSortType} = categorySlice.actions
+export const {setSearch, setCategoryId, setSortType} = categorySlice.actions
 
 export default categorySlice.reducer
 /*

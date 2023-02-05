@@ -1,7 +1,6 @@
 import React from 'react';
 import qs from 'qs';
 import { useDispatch, useSelector } from 'react-redux';
-import { SearchContext } from '../App';
 
 import Categories from '../components/Categories';
 import PizzaItem from '../components/PizzaItem';
@@ -15,14 +14,14 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate()
-  const {search} = React.useContext(SearchContext)
-
+  //const {search} = React.useContext(SearchContext)
+  
   const pizza = [...pizzaJson]
      
 //redux toolkit  start
   const dispatch = useDispatch()
   
-  const {categoryId, sortType} = useSelector( state => state.category)
+  const {search, categoryId, sortType} = useSelector( state => state.category)
   
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
