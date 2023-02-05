@@ -1,0 +1,224 @@
+.drawer {
+  padding: 20px;
+  width: 900px;
+  margin: 0 auto;
+  border: 2px solid #7c7a7a;
+  border-radius: 20px;
+  //background-color: rgb(244, 230, 136);
+}
+.drawer__header {
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__left {
+  display: flex;
+  .header__main_icon {
+    width: 30px;
+    height: 30px;
+  }
+  .header__title {
+    padding: 0px 20px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: 0.01em;
+    color: #000000;
+  }
+}
+.header__right {
+  display: flex;
+  align-items: center;
+
+  .header__clear_icon {
+    width: 20px;
+    height: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__title {
+    padding: 0 20px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #756c6c;
+  }
+}
+.drawer__main {
+  padding-bottom: 20px;
+  .main__list {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    color: #000000;
+
+    .liPizza {
+      padding-bottom: 20px;
+      display: grid;
+      grid-template-columns: 3fr 1fr 1fr 1fr;
+      align-items: center;
+      justify-items: center;
+      //display: flex;
+      //justify-content: space-between;
+      //align-items: center;
+
+      &__main {
+        justify-self: start;
+        display: flex;
+        align-items: center;
+      }
+      &__main__text {
+        padding: 0 20px;
+        div {
+          padding: 5px 0;
+        }
+      }
+      &__img {
+        img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+      &__title {
+      }
+      &__sort {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 18px;
+        letter-spacing: 0.01em;
+        color: #4e4b4b;
+        span {
+          padding-left: 20px;
+        }
+      }
+      button {
+        width: 32px;
+        height: 32px;
+        border: 2px solid #fe5f1e;
+        color: #fe5f1e;
+        border-radius: 50%;
+        font-size: 20px;
+        background-color: #fff;
+        &:hover {
+          background-color: #fe5f1e;
+          color: #ffffff;
+          border-color: #fe5f1e;
+          cursor: pointer;
+        }
+      }
+      &__add {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      &__count {
+      }
+      &__price {
+      }
+      &__remove {
+        button {
+          background: #ffffff;
+          border: 2px solid #7b7878;
+          color: #4e4b4b;
+          font-size: 20px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .main__footer {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .countPizza {
+    span {
+      padding: 0 10px;
+      font-weight: 900;
+      font-size: 24px;
+    }
+  }
+  .priceAllPizza {
+    span {
+      padding: 10px;
+      font-weight: 900;
+      font-size: 24px;
+      color: #fe5f1e;
+    }
+  }
+}
+
+.drawer__footer {
+  display: flex;
+  justify-content: space-between;
+  button {
+    font-size: 20px;
+    width: 211px;
+    height: 55px;
+    background: #ffffff;
+    border: 1px solid #7c7a7a;
+    border-radius: 30px;
+    &:hover {
+      background: #fe5f1e;
+      color: #ffffff;
+      border-color: #fe5f1e;
+    }
+  }
+
+  .doOrder__btn {
+  }
+}
+
+.drawer__empty {
+}
+.de {
+  .de__title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: 0.01em;
+    color: #000000;
+  }
+  &__text {
+    padding-bottom: 20px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 145.4%;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #5e5959;
+  }
+  &__img {
+    padding-bottom: 20px;
+    text-align: center;
+    img {
+      width: 300px;
+      height: 255px;
+    }
+  }
+  &__button {
+    text-align: center;
+    button {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 16px;
+      text-align: center;
+      letter-spacing: 0.015em;
+      color: #ffffff;
+      width: 210px;
+      height: 46px;
+      background-color: #000;
+      border-radius: 30px;
+    }
+  }
+}

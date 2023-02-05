@@ -64,7 +64,7 @@
     "imageUrl" : "img/3.png",
     "name" : "Vegeterian",
     "types" : [0, 1],
-    "sizes" : [35, 45, 60],
+    "sizes" : [25, 45, 60],
     "price" : 22,
     "category" : 1,
     "rating" : 4
@@ -84,7 +84,7 @@
     "imageUrl" : "img/1.png",
     "name" : "Margarita",
     "types" : [0, 1],
-    "sizes" : [30, 45, 60],
+    "sizes" : [25, 45, 60],
     "price" : 18,
     "category" : 5,
     "rating" : 2
@@ -94,7 +94,7 @@
     "imageUrl" : "img/2.png",
     "name" : "Vegan",
     "types" : [0, 1],
-    "sizes" : [30, 40, 50],
+    "sizes" : [25, 40, 50],
     "price" : 20,
     "category" : 5,
     "rating" : 7

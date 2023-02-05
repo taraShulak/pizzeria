@@ -1,5 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit"
 
+
+const initialState = {
+  categoryId : 0,
+  sortType: 'rating'
+}
+
+const categorySlice = createSlice({
+  name : 'category',
+  initialState,
+  reducers : {
+    setCategoryId(state, action) {
+      state.categoryId = action.payload
+    },
+    setSortType(state, action) {
+      state.sortType = action.payload
+    }
+  }
+})
+
+export const {setCategoryId, setSortType} = categorySlice.actions
+
+export default categorySlice.reducer
+/*
 const initialState = {
   value: 0,
 }
@@ -28,3 +51,4 @@ export const categorySlice = createSlice({
 export const { increment, decrement, incrementByAmount } = counterSlice.actions
 
 export default counterSlice.reducer
+*/

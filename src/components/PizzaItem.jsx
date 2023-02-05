@@ -1,22 +1,50 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItem, selectDrawerItem } from '../redux/slices/drawerSlice'
 import style from '../scss/PizzaItem.module.scss'
 
 const PizzaItem = (props) => {
+  const typesPizza = ['thin', 'thick']
+  const dispatch = useDispatch()
+ 
+  const [typeChouse, setTypeChouse] = React.useState(0)
+  const [sizeChouse, setSizeChouse] = React.useState(0)
+  const [pricePizza, setPricePizza] = React.useState(props.price)
+   
+  const drawerItem = useSelector(selectDrawerItem(props.id, props.sizes[sizeChouse], typesPizza[typeChouse]))
+  //const drawerItem = useSelector(state => selectDrawerItem(props.id, props.sizes[sizeChouse], typesPizza[typeChouse], state))
+  console.log(drawerItem, ' count');
 
-  const [typeChouse, setTypeChouse] = React.useState(1)
-  const [sizeChouse, setSizeChouse] = React.useState(1)
-  const [isAdd, setIsAdd] = React.useState(false)
-  
-  const onAdd = () => {
-    setIsAdd(!isAdd)
-    console.log(isAdd);
+  const addedCount = drawerItem ? drawerItem.count : 0
+
+  const hendleChouseSize = (size, index) => {
+    setSizeChouse(index)
+    const pPrice = props.price + props.price * (size - 25) * 0.025 + (props.price * 0.3 * typeChouse) 
+    setPricePizza(Math.round(pPrice *10) / 10)
+    //setPricePizza(() => props.price + props.price * (size - 25) * 0.025 + (props.price * 0.3 * typeChouse) )
   }
 
   const hendleChouseType = (id) => {
     setTypeChouse(id)
+    let size = props.sizes[sizeChouse]
+    const pPrice =  props.price + props.price * 0.3 * id + props.price * (size - 25) * 0.025
+    setPricePizza(Math.round(pPrice*10) / 10)
+    //setPricePizza(() => props.price + props.price * 0.3 * id + props.price * (size - 25) * 0.025) 
   }
  
-  const typesPizza = ['think', 'big']
+  
+
+  const onClickAdd = () => {
+    const item = {
+      id : props.id,
+      name : props.name,
+      price: pricePizza,
+      imageUrl : props.imageUrl,
+      type: typesPizza[typeChouse],
+      size: props.sizes[sizeChouse]
+    }
+    dispatch(addItem(item))    
+  }
 
   return (
     <div className={style.list__item}>
@@ -34,15 +62,17 @@ const PizzaItem = (props) => {
               <div className={style.option__size}>
                 {
                   props.sizes.map((item, index) => <button 
-                    onClick={() => setSizeChouse(index)}
+                    onClick={() => hendleChouseSize(item, index)}
                     className={`${style.size} ${sizeChouse == index ? style.active : null}`}>{item} sm</button>)
                 }
               </div>
             </div>
             <div className={style.item__footer}>
-              <div className={style.item__price}>{props.price} $</div>
-              <button onClick={() => onAdd()}
-              className={`${style.item__buy} ${ isAdd ? style.added : null}`}>+ add</button>
+              <div className={style.item__price}>{pricePizza} $</div>
+              <button onClick={onClickAdd} className={style.item__buy}>
+                add
+                {addedCount > 0 && <span>{addedCount}</span>}
+               </button>
             </div>
     </div>
   )

@@ -19,7 +19,7 @@ import style from '../scss/Categories.module.scss'
   )
 }
 */
-const Categories = ({value, onClickCategory}) => {
+const Categories = ({value, onChangeCategory}) => {
 
   const categories = ['all', 'chease', 'meat', 'margarita', 'vegan','vegeterian']
  
@@ -30,7 +30,7 @@ const Categories = ({value, onClickCategory}) => {
             categories.map((item, index) => 
             <li 
               key={index}
-              onClick={() => onClickCategory(index)} 
+              onClick={() => onChangeCategory(index)} 
               className={`${style.categories__item} ${value == index ? style.active : null}`}>
                   {item}
             </li>
