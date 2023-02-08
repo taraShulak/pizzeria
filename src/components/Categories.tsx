@@ -1,7 +1,6 @@
 import React from 'react'
+
 import style from '../scss/Categories.module.scss'
-
-
 
 /*const ButtonCategorie = () => {
   
@@ -19,12 +18,19 @@ import style from '../scss/Categories.module.scss'
   )
 }
 */
-const Categories = ({value, onChangeCategory}) => {
+type CategoriesProps = {
+  value: number;
+  onChangeCategory: (i: number) => void;
+}
 
-  const categories = ['all', 'chease', 'meat', 'margarita', 'vegan','vegeterian']
- 
+const categories = ['all', 'chease', 'meat', 'margarita', 'vegan','vegeterian']
+
+const Categories: React.FC <CategoriesProps> =React.memo(({value, onChangeCategory}) => {
+  
+ // console.log('rerender'); 
+  
   return (
-    <div className={style.categories}>
+    <div className={style.categories}>      
           <ul className={style.categories__list}>
            {
             categories.map((item, index) => 
@@ -38,6 +44,6 @@ const Categories = ({value, onChangeCategory}) => {
           </ul>
     </div>
   )
-}
+})
 
 export default Categories

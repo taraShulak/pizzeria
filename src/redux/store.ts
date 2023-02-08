@@ -10,6 +10,9 @@ export const store = configureStore({
     pizza
   }
 })
+
+export type RootState = ReturnType<typeof store.getState>
+
 /*import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({

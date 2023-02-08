@@ -1,34 +1,68 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from './DrawerPizza.module.scss'
-import { addItem, minusItem, removeItem, clearItems, selectDrawer } from '../redux/slices/drawerSlice'
+import { addItem, minusItem, removeItem, clearItems, selectDrawer, TDrawerItem } from '../redux/slices/drawerSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 
-export const LiPizza = (props) => {
+type LiPizzaProps = {
+  id: number;
+  name: string;
+  size: number;
+  type: string;
+  imageUrl: string;
+  rating?: number;
+  category?: number;
+  price: number;
+  count: number;
+}
+
+export const LiPizza: React.FC <LiPizzaProps> = (props) => {
   const dispatch = useDispatch()
   
   const onClickPlus = () => {
-    const item = {
+    const item: TDrawerItem = {
       id : props.id,
       type: props.type,
-      size: props.size
+      size: props.size,
+      name: props.name,
+      imageUrl: props.imageUrl,
+      price: props.price,
+      count: props.count
     }
     dispatch(addItem(item))    
   }
 
   const onClickMinus = () => {
-    const item = {
+    const item: TDrawerItem = {
       id : props.id,
       type: props.type,
-      size: props.size
+      size: props.size,
+      name: props.name,
+      imageUrl: props.imageUrl,
+      price: props.price,
+      count: props.count
     }
+/*  to autoticaly remove the item when we have one item and click to minus
+
+    if ( item.count === 1) {
+      dispatch(removeItem(item))
+    } else {
+      dispatch(remove(item))
+    }
+*/    
     dispatch(minusItem(item))    
+  
   }
   const onClickRemove = () => {
-    const item = {
+    const item: TDrawerItem = {
       id : props.id,
       type: props.type,
-      size: props.size
+      size: props.size,
+      name: props.name,
+      imageUrl: props.imageUrl,
+      price: props.price,
+      count: props.count
     }
     dispatch(removeItem(item))   
   }
@@ -48,7 +82,9 @@ export const LiPizza = (props) => {
             </div>
           </div>
           <div className={style.liPizza__add}>
-            <button onClick={onClickMinus}> - </button>
+            <button 
+              disabled={props.count === 1}
+              onClick={onClickMinus}> - </button>
             <div className={style.liPizza__count}>{props.count}</div>
             <button onClick={onClickPlus}> + </button>
           </div>
@@ -60,17 +96,18 @@ export const LiPizza = (props) => {
   )
 }
 
-const DrawerPizza = () => {
+const DrawerPizza: React.FC = () => {
   const dispatch = useDispatch()
-  const {totalPrice, items} = useSelector(selectDrawer)  
-    
-  //const pizza = [...pizzaJson]
-  //const pizza = false
+  const {totalPrice, items} = useSelector(selectDrawer)    
+
   const onClickClear = () => {
+    //@ts-ignore
     dispatch(clearItems())
   }
 
   return (
+    <>
+     <Header />
     <div className={style.drawer}>
      { items.length > 0 &&           
           <div>
@@ -90,13 +127,13 @@ const DrawerPizza = () => {
             </section>
             <section className={style.drawer__main}>
               <ul className={style.main__list}>
-                {items.map(item =>  <LiPizza key={`${item.id}${item.size}${item.type}`} {...item} />)
+                {items.map((item: LiPizzaProps) =>  <LiPizza key={`${item.id}${item.size}${item.type}`} {...item} />)
                 }
               </ul>
               <div className={style.main__footer}>
                 <div className={style.countPizza}>
                   all pizzas 
-                  <span>{items.reduce((sum, obj) => sum + obj.count, 0)} pt.</span>
+                  <span>{items.reduce((sum: number, obj: LiPizzaProps) => sum + obj.count, 0)} pt.</span>
                 </div>
                 <div className={style.priceAllPizza}>
                   total price 
@@ -129,7 +166,8 @@ const DrawerPizza = () => {
         </div>
       }
     </div>
-  )
+  
+  </>)
 }
 
 export default DrawerPizza

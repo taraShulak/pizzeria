@@ -1,27 +1,43 @@
+import { RootState } from './../store';
 import { createSlice } from "@reduxjs/toolkit"
+import type { PayloadAction } from '@reduxjs/toolkit'
 
+export type TSortType =  'price' | 'rating' | 'name' | string;
+export enum  EnumSortType { 
+  PRICEUP = 'price',
+  RATING =  'rating',
+  NAME = 'name'
+};
 
-const initialState = {
+type TInitialState = {
+  search: string;
+  categoryId: number;
+  sortType: EnumSortType;
+}
+
+const initialState: TInitialState = {
   search: '',
   categoryId : 0,
-  sortType: 'rating'
+  sortType: EnumSortType.RATING
 }
 
 const categorySlice = createSlice({
   name : 'category',
   initialState,
   reducers : {
-    setSearch(state, action) {
+    setSearch(state, action: PayloadAction<string>) {
       state.search = action.payload
     },
-    setCategoryId(state, action) {
+    setCategoryId(state, action: PayloadAction<number>) {
       state.categoryId = action.payload
     },
-    setSortType(state, action) {
+    setSortType(state, action:PayloadAction<EnumSortType>) {
       state.sortType = action.payload
     }
   }
 })
+
+export const selectCategory = (state: RootState) => state.category
 
 export const {setSearch, setCategoryId, setSortType} = categorySlice.actions
 

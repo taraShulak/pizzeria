@@ -1,15 +1,21 @@
 import React from 'react';
+import { EnumSortType } from '../redux/slices/categorySlice';
 import style from '../scss/Sort.module.scss';
 
-const listOption = ['name', 'price', 'rating']
+const listOption = [EnumSortType.PRICEUP, EnumSortType.RATING, EnumSortType.NAME]
 
-const Sort = ({value, onChangeType}) => {
+type SortProps = {
+  value: string;
+  onChangeType: (str: EnumSortType) => void;
+}
+
+const Sort: React.FC <SortProps> = React.memo(({value, onChangeType}) => { 
   
-  const sortRef = React.useRef()
+  const sortRef = React.useRef<HTMLDivElement>(null)
   const [isList, setIsList] = React.useState(false)
-  const [listName, setListName] = React.useState(listOption[0])
+  const [listName, setListName] = React.useState<string>(listOption[0])
 
-  const hendleListName = (index) => {
+  const hendleListName = (index: number) => {
     setIsList(false)
     //setListName( listOption[ index])
     onChangeType( listOption[index])
@@ -17,7 +23,7 @@ const Sort = ({value, onChangeType}) => {
 // when onClick outside Sort ....div sortList deleted or hidden
   React.useEffect(() => {
    
-      const hendleClickSort = (event ) => {
+      const hendleClickSort = (event: any ) => {
        // console.log(event.composedPath()) 
         const path = event.composedPath().includes(sortRef.current)
         if(!path) {
@@ -37,11 +43,13 @@ const Sort = ({value, onChangeType}) => {
       </div>
       {isList && 
           <ul className={style.sort__list}>
-            {listOption.map( (item, index) => <li onClick={()=> hendleListName(index)}> {item} </li>)}
+            {listOption.map( (item, index) => <li 
+                    key={index}
+                    onClick={()=> hendleListName(index)}> {item} </li>)}
           </ul>
       }
     </div>
   )
-}
+})
 
 export default Sort

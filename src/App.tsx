@@ -1,11 +1,11 @@
 import React from 'react'
 import { Routes, Route} from "react-router-dom";
 
-import Header from './components/Header';
 import style from './scss/App.module.scss';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import DrawerPizza from './pages/DrawerPizza';
+const DrawerPizza = React.lazy(() => import('./pages/DrawerPizza'));
+//import DrawerPizza from './pages/DrawerPizza';
 
 
 
@@ -55,12 +55,15 @@ React.useEffect(() => {
 
 
   return (
-    <div className={style.wrapper}>
-        <Header />
+    <div className={style.wrapper}>       
         <main className={style.main}>
           <Routes>
-            <Route path='/*' element={<Home  />}/>
-            <Route path='/cart' element={<DrawerPizza/>}/>
+            <Route path='/*' element={ <Home  />} />            
+            <Route path='/cart' element={
+                  <React.Suspense fallback={<div>Завантаження drawer...</div>}>
+                        <DrawerPizza/>
+                  </React.Suspense>
+            }/>
             {/*<Route path='*' element={<NotFound/>} />*/}
           </Routes>        
         </main>      

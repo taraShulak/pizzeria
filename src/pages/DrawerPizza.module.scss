@@ -46,6 +46,16 @@
     color: #756c6c;
   }
 }
+/*.button_none {
+  opacity: 0.3;
+  &:hover {
+    background-color: transparent !important;
+    color: #5e5959 !important;
+    cursor: auto !important;
+    transform: none !important;
+  }
+}
+*/
 .drawer__main {
   padding-bottom: 20px;
   .main__list {
@@ -107,6 +117,15 @@
           color: #ffffff;
           border-color: #fe5f1e;
           cursor: pointer;
+        }
+        &:disabled {
+          opacity: 0.3;
+          &:hover {
+            background-color: transparent !important;
+            color: #5e5959 !important;
+            cursor: auto !important;
+            transform: none !important;
+          }
         }
       }
       &__add {

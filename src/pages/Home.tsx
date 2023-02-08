@@ -1,18 +1,21 @@
 import React from 'react';
 import qs from 'qs';
+import useWhyDidYouUpdate  from 'ahooks/lib/useWhyDidYouUpdate';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from '../components/Categories';
-import PizzaItem from '../components/PizzaItem';
+import PizzaItem, { PizzaItemProps } from '../components/PizzaItem';
 import PizzaItemSkeleton from '../components/PizzaItemSkeleton';
 import Sort from '../components/Sort';
 import pizzaJson from '../pizza.json';
-import { setCategoryId, setSortType } from '../redux/slices/categorySlice';
+import { EnumSortType, selectCategory, setCategoryId, setSortType, TSortType } from '../redux/slices/categorySlice';
 
 import style from '../scss/App.module.scss';
 import { useNavigate } from 'react-router-dom';
+//const Header = React.lazy(() => import('../components/Header'));
+import Header from '../components/Header';
 
-const Home = () => {
+const Home: React.FC = () => {
   const navigate = useNavigate()
   //const {search} = React.useContext(SearchContext)
   
@@ -21,15 +24,15 @@ const Home = () => {
 //redux toolkit  start
   const dispatch = useDispatch()
   
-  const {search, categoryId, sortType} = useSelector( state => state.category)
+  const {search, categoryId, sortType} = useSelector(selectCategory)
   
-  const onChangeCategory = (id) => {
+  const onChangeCategory = React.useCallback((id: number) => {
     dispatch(setCategoryId(id));
-  };
+  }, []);
 
-  const onChangeSortType = (sortName) => {
+  const onChangeSortType = React.useCallback((sortName: EnumSortType) => {
     dispatch(setSortType(sortName))
-  }
+  }, [])
 //redux toolkit end
 
   React.useEffect(() => {
@@ -46,9 +49,9 @@ const Home = () => {
       search: search
     })
     navigate(`${queryString}`)
-    console.log(queryString);
+    //console.log(queryString);
   }, [sortType, categoryId, search])
-
+/*
   function sortPrice(a,b){
     if(a['price']>b['price'])return 1;
     if(a['price']<b['price'])return -1;
@@ -66,10 +69,12 @@ const Home = () => {
     if(a.rating<b.rating)return -1;
     return 0;
   }
-  
+  */
 
+  
   return (
     <>
+      <Header />
       <section className={style.main__top}>
           <Categories value={categoryId} onChangeCategory={onChangeCategory}/>
           <Sort value={sortType} onChangeType={onChangeSortType}/>
@@ -77,10 +82,10 @@ const Home = () => {
       <section className={style.main__menu}>
           <h2 className={style.main__menu_title}>All pizza</h2>
           <ul className={style.main__menu_list}>
-            {
+            { 
               pizza.filter(item => categoryId == 0 ? true : item.category == categoryId)
-              .filter(item => item.name.toLowerCase().includes( search.toLowerCase()))
-              .sort((a,b) => a[sortType] - b[sortType])              
+              .filter(item => item.name.toLowerCase().includes( search.toLowerCase()))              
+              .sort((a: any ,b: any ) => a[sortType] - b[sortType])                            
               .map( item => <PizzaItem key={item.id} {...item}/>)
             }
           </ul>
